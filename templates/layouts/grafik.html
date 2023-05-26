@@ -27,15 +27,7 @@
                         <a type="button" class="btn btn-outline-light me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false" id="dropdownMenuLink" href="/">{{ request.user.username }}</a>
                         
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            {% for freelancer in freelancer_list %}
-                                {% if freelancer.freelancer_user_name == request.user.username %}
-                                    <li><a class="dropdown-item" href="/blog/kontrolpanel">Panel</a></li>
-                                {% else %}  
-                                    <li><a class="dropdown-item" href="/blog/userprofil">Panel</a></li>
-                                {% endif %}
-                            {% endfor %} 
-
-
+                            <li><a class="dropdown-item" href="/blog/kontrolpanel">Kontrol Paneli</a></li>   
                             <li><a class="dropdown-item" href="/user/logout">Çıkış Yap</a></li>
                             
                             

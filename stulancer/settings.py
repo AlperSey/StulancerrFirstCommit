@@ -34,6 +34,7 @@ ALLOWED_HOSTS = [
 # Application definition
 
 INSTALLED_APPS = [
+    'daphne',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,12 +43,16 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'user',
     'blog',
+    'chat',
     'crispy_forms',
     'crispy_bootstrap5',
     'tinymce',
     'easy_thumbnails',
     'channels',
-    'chat',
+    
+    
+
+    
     
     
     
@@ -87,6 +92,14 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'stulancer.wsgi.application'
 ASGI_APPLICATION = 'stulancer.asgi.application'
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels_redis.core.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [("127.0.0.1", 6379)],
+        },
+    },
+}
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
@@ -163,5 +176,6 @@ THUMBNAIL_ALIASES = {
         'avatar': {'size': (30, 30), 'crop': True},
         'avatar2x': {'size': (60, 60), 'crop': True},
         'thumbnail': {'size': (900, 1200), 'crop': True},
+        'page':{'size':(800,450),'crop':True},
     },
 }

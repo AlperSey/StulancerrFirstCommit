@@ -118,40 +118,6 @@ def register_view(request):
     
     return render(request,'login/register.html',context)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     # context=dict()
     # if request.method =="POST":
     #     post_info = request.POST

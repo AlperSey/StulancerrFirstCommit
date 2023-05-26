@@ -14,10 +14,11 @@ from user.models import Freelancer , AllUser
 
 # HOME PAGE DEF
 def home_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
     
+   
     context = dict(
-        freelancer_list = freelancer_list
+        
+        
     )
     
     # latest_freelancer_list = Freelancer.objects.order_by("-register_date")[:5]
@@ -47,71 +48,71 @@ def home_view(request):
 
 # PAGE DEF
 def ceviri_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
-    posts = Post.objects.all()
+    
+    
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+        
+        
     )
     return render(request,'layouts/ceviri.html',context)
 
 def grafik_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
-    posts = Post.objects.all()
+    
+    
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+        
+        
     )
     return render(request,'layouts/grafik.html',context)
 
 
 def muzik_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
-    posts = Post.objects.all()
+    
+    
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+        
+        
     )
     return render(request,'layouts/muzik.html',context)
 
 
 def reklam_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
+    
     posts = Post.objects.all()
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+       
+        
     )
     return render(request,'layouts/reklam.html',context)
 
 
 def video_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
-    posts = Post.objects.all()
+    
+    
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+       
+        
     )
     return render(request,'layouts/video.html',context)
 
 
 def yazilim_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
-    posts = Post.objects.all()
+    
+    
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+        
+        
     )
     return render(request,'layouts/yazilim.html',context)
 
 
 
 def yonetim_view(request):
-    freelancer_list =Freelancer.objects.order_by("-freelancer_first_name")
-    posts = Post.objects.all()
+    
+    
     context =dict(
-        posts = posts,
-        freelancer_list = freelancer_list
+        
+        
     )
     return render(request,'layouts/yonetim.html',context)
 
@@ -131,7 +132,7 @@ def yonetim_view(request):
 
 # FREELANCER PAGES
 
-def  freelancer_detail(request,freelancer_id):  # Normalde FREELANCER ID ye göre gelmesi lazım.Düzeltilcek
+def  freelancer_detail(request,freelancer_id):  
     freelancer_detail = Freelancer.objects.filter(pk=freelancer_id)
     context = dict(
         freelancer_detail = freelancer_detail
@@ -150,13 +151,13 @@ def freelancer_profil_duzenle(request):
     return render(request,'freelancer_temp/fre_profil_duzenle.html')
 
 def freelancer_is(request):
-    posts = Post.objects.order_by('-created_at')
+    
     context = dict(
-        posts = posts
+        
     )
         
     
-    return render(request,'freelancer_temp/freelancer_is.html')
+    return render(request,'freelancer_temp/freelancer_is.html',context)
 
 # POST YÜKLEME
 @login_required(login_url='user:login_view')
