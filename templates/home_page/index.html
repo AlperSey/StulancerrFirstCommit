@@ -1,4 +1,5 @@
 <!doctype html>
+{% load thumbnail %}
 {% load static %}
 <html lang="tr">
 
@@ -66,7 +67,8 @@
                 <h4 class="text-light fw-normal">STULANCER</h4>
                 <p class=" text-light lead fw-normal">Yetenekli freelancerlar ile daha çok iş yapın.</p>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="text" name="keyword" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div class="popular">
@@ -207,11 +209,13 @@
     <!--PROJECTS-->
 
     
-
-    <!-- <div class="container">
+    <div class="heading">
+        <h1 class="heading__title  txtype" id="about-stulance">FREELANCERS</h1>
+    </div>
+    <div class="container">
         <div class="wrap">
             
-                {% for freelancer_post in freelancer_list  %}
+                {% for freelancer_post in latest_freelancer_list  %}
             <div class="box">
                 <div class="box-top">
                     <img class="box-image"
@@ -226,18 +230,52 @@
                                 </svg></a></h3>
 
                         <p class="user-follow-info"></p>
-                    </div>
-                    <p class="description"> {{ freelancer_post.content }} </p>
-                    Category
-                    <p class="description"> {{ freelancer_post.category }} </p>
+                    </div>                    
                 </div>
                 <a href="{% url 'blog:freelancer_detail' freelancer_id=freelancer_post.pk %}" style="text-decoration: none;">See Profile</a>
             </div>
                 {% endfor %}
             
         </div>
-    </div>   -->
+    </div>
+    
+    <div class="heading">
+        <h1 class="heading__title  txtype" id="about-stulance">POSTS</h1>
+    </div>
+     <div class="container">
+        <div class="wrap">
+            
+            {% for post in posts %}   
+            <div class="box">
+                <div class="box-top">
+                    <img class="box-image"
+                        src="">
+                    <div class="title-flex">
+                        <h3 class="box-title"><a href="/blog/detail/{{ post.id }}" class="text-decoration-none text-muted">
+                            <img src="{{ post.cover_image|thumbnail_url:'thumbnail' }}" class="rounded-circle" alt="">
+                        </a>   <a href="/blog/detail/{{ post.id }}" style="text-decoration: none;">{{ post.title }}</a></h3>
 
+                        <p class="user-follow-info"></p>
+                    </div>
+                    Category
+                    <p class="description">{{ post.category }}</p>
+                    Content
+                    <span class="text-muted">
+                        {{ post.content|safe }}
+                    </span>
+                    
+                    <a href="/blog/blogdetail/{{ post.id }}" style="text-decoration: none;">See Detail</a>
+                    
+                </div>
+                
+                
+                
+            </div>
+                
+            {% endfor %}
+        </div>
+    </div>   
+ 
     
             
 

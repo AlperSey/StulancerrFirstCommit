@@ -18,7 +18,12 @@ urlpatterns = [
     path('video/',views.video_view,name='video_view'),
     path('yazilim/',views.yazilim_view,name='yazilim_view'),
     path('yonetim/',views.yonetim_view,name='yonetim_view'),
+    path('blogdetail/<int:id>/',views.post_detail,name='post_detail'),
     
+    #COMMENTS
+    path('comment/<int:id>/',views.addComment,name='addComment'),
+
+
     #DASHBOARD
     #Freelancer
     path('kontrolpanel/',views.freelancer_profil,name='freelancer_profil'),
@@ -31,10 +36,10 @@ urlpatterns = [
     path('userprofil/',views.user_profil,name='user_profil'),
     path('userProfilduzenle/',views.user_profil_duzenle,name='user_profil_duzenle'),
 
-
+    
 
     #PROFİL - FREELANCER
-    path('freelancerdetail/<int:freelancer_id>/',views.freelancer_detail,name='freelancer_detail')
+    path('freelancerdetail/<int:freelancer_id>/',views.freelancer_detail,name='freelancer_detail'),
     # path("<int:freelancer_id>/",views.freelancer_detail, name="freelancer_detail"),
     
     

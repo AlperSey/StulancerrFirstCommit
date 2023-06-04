@@ -1,0 +1,15 @@
+<h5 class="card-header">Yorum Ekle</h5>
+                    <div class="card-body" method="POST" action="{% url 'blog:yorum_ekle' post.id %}">
+                        <form>
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">İsim</label>
+                                <input name="comment_author" type="text" class="form-control" id="formGroupExampleInput" placeholder="İsminizi Yazınız">
+                            </div>
+                            <div class="form-group">
+                                <label for="formGroupExampleInput">Yorum</label>
+                                <textarea name="comment_content" class="form-control"  rows="3"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-danger">Yorum Yap</button>
+                        </form>
+                    </div>

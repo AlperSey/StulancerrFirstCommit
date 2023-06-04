@@ -175,7 +175,7 @@ THUMBNAIL_ALIASES = {
     '': {
         'avatar': {'size': (30, 30), 'crop': True},
         'avatar2x': {'size': (60, 60), 'crop': True},
-        'thumbnail': {'size': (900, 1200), 'crop': True},
+        'thumbnail': {'size': (30, 50), 'crop': True},
         'page':{'size':(800,450),'crop':True},
     },
 }

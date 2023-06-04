@@ -1,8 +1,8 @@
-from django.shortcuts import render , redirect , get_object_or_404
+from django.shortcuts import render , redirect , get_object_or_404 , reverse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 
-from blog.models import Post , Category
+from blog.models import Post , Category , Comments
 from blog.form import PostModelForm
 
 from user.models import Freelancer , AllUser
@@ -14,37 +14,50 @@ from user.models import Freelancer , AllUser
 
 # HOME PAGE DEF
 def home_view(request):
-    
-   
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+    freelancers = Freelancer.objects.all()
     context = dict(
-        
+        posts = posts,
+        categories = categories,
+        latest_freelancer_list =freelancers,
         
     )
     
-    # latest_freelancer_list = Freelancer.objects.order_by("-register_date")[:5]
-    # context = {"latest_freelancer_list": latest_freelancer_list}
+
+   
 
     return render(request,'home_page/index.html',context)
 
+# POST DETAİL VİEW
+def post_detail(request,id):
+    # post = Post.objects.filter( id = id).first()
+    post = get_object_or_404(Post,id=id)
+    comments = post.comments.all()
+    context = dict(
+        post = post,
+        comments = comments
+    )
+    return render(request,'layouts/detail.html',context)
 
 # CATEGORY DEF
 # def category_view(request,category_slug):
-    # category = get_object_or_404(Cetagory,slug = category_slug)
-    # categories = Cetagory.objects.all().order_by('title')
-    # posts = Post.objects.all().order_by('-created_at',category=category)
+#     keyword = request.GET.get('keyword')
+#     if keyword:
 
+#     category = get_object_or_404(Category,slug = category_slug)
+#     categories = Category.objects.filter(is_active = True).order_by('title')
+#     posts = Post.objects.filter(
+#         category = category,
+#         is_active = True,
+#     ).order_by('-created_at')
+#     context = dict(
+#         category = category,
+#         categories = categories,
+#         posts = posts 
+#     )
 
-    # context =dict(
-    #     category = category,
-    #     categories = categories,
-    #     posts = posts,
-    # )
-    
-    
-    # latest_freelancer_list = Freelancer.objects.order_by("-register_date")[:5]
-    # context = {"latest_freelancer_list": latest_freelancer_list}
-
-    # return render(request,'home_page/index.html',context)
+#     return render(request,'home_page/index.html',context)
 
 # PAGE DEF
 def ceviri_view(request):
@@ -78,7 +91,7 @@ def muzik_view(request):
 
 def reklam_view(request):
     
-    posts = Post.objects.all()
+    
     context =dict(
        
         
@@ -116,9 +129,19 @@ def yonetim_view(request):
     )
     return render(request,'layouts/yonetim.html',context)
 
+# COMMENT DEF
+def addComment(request,id):
+    post = get_object_or_404(Post,id = id)
 
+    if request.method == "POST":
+        comment_author = request.POST["comment_author"]
+        comment_content = request.POST["comment_content"]
 
-
+        newComment = Comments(comments_author = comment_author,comment_content = comment_content)
+        newComment.posts = post
+        newComment.save()
+    return redirect(reverse("blog:post_detail",kwargs={"id":id}))
+    # return redirect("/blog/blogdetail/"+ str(id))    
 
 
 
@@ -180,10 +203,9 @@ def freelancer_post_card(request):
 
 
 def freelancer_post(request):
-    context={
-        
-    }
-    return render(request,'freelancer_temp/freelancer_post.html',context)
+    
+    
+    return render(request,'freelancer_temp/freelancer_post.html')
 
 
 def freelancer_profil(request):

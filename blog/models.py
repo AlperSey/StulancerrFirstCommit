@@ -32,6 +32,18 @@ class Post(BaseModel):
 
     def __str__(self):
         return self.title 
+    
+    class Meta:
+        ordering = ["-created_at"]
+
+class Comments(models.Model):
+    posts = models.ForeignKey(Post,on_delete=models.CASCADE,verbose_name="Post",related_name='comments')
+    comments_author = models.CharField(max_length=50,verbose_name='Name')
+    comment_content = models.CharField(max_length=200,verbose_name='comment')
+    comment_date = models.DateTimeField(auto_now_add=True)
+    class Meta:
+        ordering = ["-comment_date"]
+
 
 
 
