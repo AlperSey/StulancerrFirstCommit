@@ -14,13 +14,24 @@ from user.models import Freelancer , AllUser
 
 # HOME PAGE DEF
 def home_view(request):
+    
+    # #SEARCH BOX
+    # keyword = request.GET["keyword"]
+    # if keyword:
+    #     categories =Post.objects.filter(title__contains = keyword)
+        
+
+
+
     posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    
     categories = Category.objects.filter(is_active = True)
     freelancers = Freelancer.objects.all()
     context = dict(
         posts = posts,
         categories = categories,
         latest_freelancer_list =freelancers,
+        # keyword = keyword
         
     )
     
@@ -28,6 +39,10 @@ def home_view(request):
    
 
     return render(request,'home_page/index.html',context)
+
+
+
+
 
 # POST DETAİL VİEW
 def post_detail(request,id):
@@ -61,66 +76,111 @@ def post_detail(request,id):
 
 # PAGE DEF
 def ceviri_view(request):
-    
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
     
     context =dict(
+        posts = posts,
+        categories = categories,
         
         
     )
     return render(request,'layouts/ceviri.html',context)
 
 def grafik_view(request):
-    
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
     
     context =dict(
+        posts = posts,
+        categories = categories,
         
         
-    )
+    )  
     return render(request,'layouts/grafik.html',context)
 
 
 def muzik_view(request):
-    
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
     
     context =dict(
+        posts = posts,
+        categories = categories,
         
         
-    )
+    )   
     return render(request,'layouts/muzik.html',context)
 
 
 def reklam_view(request):
-    
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
     
     context =dict(
-       
+        posts = posts,
+        categories = categories,
         
-    )
+        
+    )  
+    
+    
+
     return render(request,'layouts/reklam.html',context)
 
 
 def video_view(request):
-    
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
     
     context =dict(
-       
+        posts = posts,
+        categories = categories,
         
-    )
+        
+    )  
+    
+
     return render(request,'layouts/video.html',context)
 
 
 def yazilim_view(request):
-    
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
     
     context =dict(
+        posts = posts,
+        categories = categories,
         
         
-    )
+    )  
+    
+    
+
     return render(request,'layouts/yazilim.html',context)
 
 
 
 def yonetim_view(request):
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+
+    
+    context =dict(
+        posts = posts,
+        categories = categories,
+        
+        
+    )  
+    
+
+    return render(request,'layouts/yonetim.html',context)
     
     
     context =dict(
@@ -203,9 +263,21 @@ def freelancer_post_card(request):
 
 
 def freelancer_post(request):
+    posts = Post.objects.filter(is_active=True).order_by('-created_at')
+    categories = Category.objects.filter(is_active = True)
+    freelancers = Freelancer.objects.all()
     
+
     
-    return render(request,'freelancer_temp/freelancer_post.html')
+    context =dict(
+        posts = posts,
+        categories = categories,
+    
+        
+        
+    )  
+    
+    return render(request,'freelancer_temp/freelancer_post.html',context)
 
 
 def freelancer_profil(request):

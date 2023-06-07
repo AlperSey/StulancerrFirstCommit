@@ -1,4 +1,5 @@
 <!doctype html>
+{% load thumbnail %}
 {% load static %}
 <html lang="tr">
 
@@ -124,36 +125,52 @@
         </div>
     </div>
 </div>
-    <!--PROJECTS-->
-    <!-- <div class="container">
-        <div class="wrap">
-            
-                {% for freelancer_post in posts  %}
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="{{ freelancer_post.cover_image.url }}">
-                    <div class="title-flex">
-                        <h3 class="box-title"><a href="{% url 'blog:freelancer_detail' id=freelancer_post.pk %}" class="text-decoration-none text-muted">
-                            <img src="https://picsum.photos/id/110/30/30?grayscale" class="rounded-circle" alt="">
-                        </a>   <a href="{% url 'blog:freelancer_detail' id=freelancer_post.pk %}" style="text-decoration: none;">{{ freelancer_post.title }}<svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
 
-                        <p class="user-follow-info"></p>
-                    </div>
-                    <p class="description"> {{ freelancer_post.content }} </p>
-                    Category
-                    <p class="description"> {{ freelancer_post.category }} </p>
+
+<!--PROJECTS-->
+<div class="container">
+    <div class="wrap">
+        {% for post in posts %} 
+        {% if post.category.title in "Çeviri" %}   
+        <div class="box">
+            <div class="box-top">
+                <img class="box-image"
+                    src="">
+                <div class="title-flex">
+                    <h3 class="box-title"><a href="/blog/detail/{{ post.id }}" class="text-decoration-none text-muted">
+                    </a>  
+                     <a href="/blog/detail/{{ post.id }}" style="text-decoration: none;">{{ post.title }}</a></h3>
+
+                    <p class="user-follow-info"></p>
                 </div>
-                <a href="{% url 'blog:freelancer_detail' id=freelancer_post.pk %}" style="text-decoration: none;">See Profile</a>
+                Category
+                <p class="description">{{ post.category }}</p>
+                Content
+                <span class="text-muted">
+                    {{ post.content|safe }}
+                </span>
+                
+                <a href="/blog/blogdetail/{{ post.id }}" style="text-decoration: none;">See Detail</a>
+                
             </div>
-                {% endfor %}
+            
+            
             
         </div>
-    </div>   -->
+        {% endif %}    
+        {% endfor %}
+        
+    </div>
+</div>  
+
+
+   
+        
+   
+
+
+<!--PROJECTS END-->
+    
 
 
        
@@ -170,7 +187,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <h6>HAKKIMIZDA</h6>
-                        <p class="text-justify">STULANCE <i>öğrencilerin hayatını kolaylaştıran
+                        <p class="text-justify text-light">STULANCE <i>öğrencilerin hayatını kolaylaştıran
                             </i>,yetenekli
                             olduğu alanlar ile ilgili işler yapmasını,ve kazanç elde etmelerini sağlayan bir
                             platformdur.
@@ -198,13 +215,11 @@
                     </div>
 
                     <div class="col-xs-6 col-md-3">
-                        <h6>Quick Links</h6>
+                        <h6>STULANCER</h6>
                         <ul class="footer-links">
-                            <li><a href="#project-section">Projeler</a></li>
-                            <li><a href="#">Freelancer Olmak</a></li>
-                            <li><a href="#">Stulancer Nedir</a>
-                            </li>
-                            <li><a href="#">Bize Ulaşın</a></li>
+                            <li><a href="#about-stulance" style=" text-decoration:none">Stulancer</a></li>
+                            <li><a href="#about-freelancer" style=" text-decoration:none">Freelancer Olmak</a></li>
+                            <li><a href="#about-proje" style=" text-decoration:none">Projeler</a>
                         </ul>
                     </div>
                 </div>

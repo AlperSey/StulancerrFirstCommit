@@ -1,4 +1,5 @@
 <!doctype html>
+{% load thumbnail %}
 {% load static %}
 <html lang="tr">
 
@@ -123,132 +124,48 @@
         </div>
     </div>
     <!--PROJECTS-->
-    <div class="container">
-        <div class="wrap">
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxNjA1MA&ixlib=rb-1.2.1&q=85"
-                        alt="Girl Eating Pizza">
-                    <div class="title-flex">
-                        <h3 class="box-title">Isaiah Jian <a href="http://"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
+<div class="container">
+    <div class="wrap">
+        {% for post in posts %} 
+        {% if post.category.title in "Grafik & Tasarım" %}   
+        <div class="box">
+            <div class="box-top">
+                <img class="box-image"
+                    src="">
+                <div class="title-flex">
+                    <h3 class="box-title"><a href="/blog/detail/{{ post.id }}" class="text-decoration-none text-muted">
+                    </a>  
+                     <a href="/blog/detail/{{ post.id }}" style="text-decoration: none;">{{ post.title }}</a></h3>
 
-                        <p class="user-follow-info">12 Projects</p>
-                    </div>
-                    <p class="description">Whipped steamed roast cream beans macchiato skinny grinder café. Iced grinder
-                        go
-                        mocha steamed grounds cultivar panna aroma.</p>
+                    <p class="user-follow-info"></p>
                 </div>
-                <a href="#" class="button" style=" text-decoration:none">Follow Isaiah</a>
+                Category
+                <p class="description">{{ post.category }}</p>
+                Content
+                <span class="text-muted">
+                    {{ post.content|safe }}
+                </span>
+                
+                <a href="/blog/blogdetail/{{ post.id }}" style="text-decoration: none;">See Detail</a>
+                
             </div>
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxNjA1MA&ixlib=rb-1.2.1&q=85"
-                        alt="Girl Eating Pizza">
-                    <div class="title-flex">
-                        <h3 class="box-title">Isaiah Jian <a href="http://"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
-
-                        <p class="user-follow-info">12 Projects</p>
-                    </div>
-                    <p class="description">Whipped steamed roast cream beans macchiato skinny grinder café. Iced grinder
-                        go
-                        mocha steamed grounds cultivar panna aroma.</p>
-                </div>
-                <a href="#" class="button">Follow Isaiah</a>
-            </div>
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxNjA1MA&ixlib=rb-1.2.1&q=85"
-                        alt="Girl Eating Pizza">
-                    <div class="title-flex">
-                        <h3 class="box-title">Isaiah Jian <a href="http://"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
-
-                        <p class="user-follow-info">12 Projects</p>
-                    </div>
-                    <p class="description">Whipped steamed roast cream beans macchiato skinny grinder café. Iced grinder
-                        go
-                        mocha steamed grounds cultivar panna aroma.</p>
-                </div>
-                <a href="#" class="button">Follow Isaiah</a>
-            </div>
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxNjA1MA&ixlib=rb-1.2.1&q=85"
-                        alt="Girl Eating Pizza">
-                    <div class="title-flex">
-                        <h3 class="box-title">Isaiah Jian <a href="http://"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
-
-                        <p class="user-follow-info">12 Projects</p>
-                    </div>
-                    <p class="description">Whipped steamed roast cream beans macchiato skinny grinder café. Iced grinder
-                        go
-                        mocha steamed grounds cultivar panna aroma.</p>
-                </div>
-                <a href="#" class="button">Follow Isaiah</a>
-            </div>
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxNjA1MA&ixlib=rb-1.2.1&q=85"
-                        alt="Girl Eating Pizza">
-                    <div class="title-flex">
-                        <h3 class="box-title">Isaiah Jian <a href="http://"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
-
-                        <p class="user-follow-info">12 Projects</p>
-                    </div>
-                    <p class="description">Whipped steamed roast cream beans macchiato skinny grinder café. Iced grinder
-                        go
-                        mocha steamed grounds cultivar panna aroma.</p>
-                </div>
-                <a href="#" class="button">Follow Isaiah</a>
-            </div>
-            <div class="box">
-                <div class="box-top">
-                    <img class="box-image"
-                        src="https://images.unsplash.com/photo-1489980557514-251d61e3eeb6?crop=entropy&cs=srgb&fm=jpg&ixid=MnwxNDU4OXwwfDF8cmFuZG9tfHx8fHx8fHx8MTYyMzMxNjA1MA&ixlib=rb-1.2.1&q=85"
-                        alt="Girl Eating Pizza">
-                    <div class="title-flex">
-                        <h3 class="box-title"><a href="#" class="text-decoration-none text-muted">
-                                <img src="https://picsum.photos/id/110/30/30?grayscale" class="rounded-circle" alt="">
-                            </a>Isaiah Jian <a href="http://"><svg xmlns="http://www.w3.org/2000/svg"
-                                    width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
-                                    <path
-                                        d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
-                                </svg></a></h3>
-
-                        <p class="user-follow-info">12 Projects</p>
-                    </div>
-                    <p class="description">Whipped steamed roast cream beans macchiato skinny grinder café. Iced grinder
-                        go
-                        mocha steamed grounds cultivar panna aroma.</p>
-                </div>
-                <a href="#" class="button">Follow Isaiah</a>
-            </div>
+            
+            
+            
         </div>
+        {% endif %}    
+        {% endfor %}
+        
     </div>
+</div>  
+
+
+   
+        
+   
+
+
+<!--PROJECTS END-->
     <!--PROJECTS END-->
     <!--FOOTER-->
     <!--FOOTER-->
@@ -258,7 +175,7 @@
                 <div class="row">
                     <div class="col-sm-12 col-md-6">
                         <h6>HAKKIMIZDA</h6>
-                        <p class="text-justify">STULANCE <i>öğrencilerin hayatını kolaylaştıran
+                        <p class="text-justify text-light">STULANCE <i>öğrencilerin hayatını kolaylaştıran
                             </i>,yetenekli
                             olduğu alanlar ile ilgili işler yapmasını,ve kazanç elde etmelerini sağlayan bir
                             platformdur.
@@ -286,13 +203,11 @@
                     </div>
 
                     <div class="col-xs-6 col-md-3">
-                        <h6>Quick Links</h6>
+                        <h6>STULANCER</h6>
                         <ul class="footer-links">
-                            <li><a href="#project-section">Projeler</a></li>
-                            <li><a href="#">Freelancer Olmak</a></li>
-                            <li><a href="#">Stulancer Nedir</a>
-                            </li>
-                            <li><a href="#">Bize Ulaşın</a></li>
+                            <li><a href="#about-stulance" style=" text-decoration:none">Stulancer</a></li>
+                            <li><a href="#about-freelancer" style=" text-decoration:none">Freelancer Olmak</a></li>
+                            <li><a href="#about-proje" style=" text-decoration:none">Projeler</a>
                         </ul>
                     </div>
                 </div>
