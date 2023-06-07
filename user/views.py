@@ -76,8 +76,8 @@ def register_view(request):
                         user.save()
                         freelancer_user.save()
 
-                        messages.success(request,freelancer_user.freelancer_first_name+" "+freelancer_user.freelancer_last_name+" Sisteme Kaydedilniz...")
-                        return render(request,'home_page/index.html')
+                        messages.success(request,freelancer_user.freelancer_first_name+" "+freelancer_user.freelancer_last_name+" Sisteme  Freelancer Olarak Kaydedildiniz.. ")
+                        return redirect('home_view')
                     
                     
 

@@ -41,6 +41,20 @@ def home_view(request):
     return render(request,'home_page/index.html',context)
 
 
+# SEARCH VİEW
+def search_view(request):
+    if request.method=='POST':
+        keyword = request.POST['keyword']
+        
+        posts = Post.objects.filter(title__contains=keyword)
+        context=dict(
+            keyword = keyword,
+            posts = posts
+        )
+        return render(request,'layouts/search.html',context)
+    else:
+        return render(request,'layouts/search.html',)
+    
 
 
 

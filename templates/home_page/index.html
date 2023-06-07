@@ -73,9 +73,9 @@
             <div class="col-md-5 p-lg-5 mx-auto my-4">
                 <h4 class="text-light fw-normal">STULANCER</h4>
                 <p class=" text-light lead fw-normal">Yetenekli freelancerlar ile daha çok iş yapın.</p>
-                <form class="d-flex">
-                    
-                    <input class="form-control me-2" type="search" name="keyword" placeholder="Search" aria-label="Search">
+                <form class="d-flex" method="POST" action="{% url 'blog:search_view' %}">
+                    {% csrf_token %}
+                    <input class="form-control me-2" type="search" name="keyword"  placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">Search</button>
                 </form>
                 <div class="popular">
@@ -171,7 +171,7 @@
     <!--ABOUT STULANCE-->
     <div class="main-container" id="about-stulance">
         <div class="heading">
-            <h1 class="heading__title  txtype" id="about-stulance">STULANCE</h1>
+            <h1 class="heading__title  txtype" id="about-stulance">STULANCER</h1>
         </div>
         <div class="cards">
             <div class="card card-1">
@@ -258,9 +258,9 @@
                     <img class="box-image"
                         src="">
                     <div class="title-flex">
-                        <h3 class="box-title"><a href="/blog/detail/{{ post.id }}" class="text-decoration-none text-muted">
+                        <h3 class="box-title"><a href="/blog/blogdetail/{{ post.id }}" class="text-decoration-none text-muted">
                             <img src="{{ post.cover_image|thumbnail_url:'thumbnail' }}" class="rounded-circle" alt="">
-                        </a>   <a href="/blog/detail/{{ post.id }}" style="text-decoration: none;">{{ post.title }}</a></h3>
+                        </a>   <a href="/blog/blogdetail/{{ post.id }}" style="text-decoration: none;">{{ post.title }}</a></h3>
 
                         <p class="user-follow-info"></p>
                     </div>

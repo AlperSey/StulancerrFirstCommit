@@ -10,7 +10,7 @@ urlpatterns = [
     path('',views.home_view,name='home_view'),
     
 
-
+    path('search/',views.search_view,name='search_view'),
     path('ceviri/',views.ceviri_view,name='ceviri_vieww'),
     path('grafik/',views.grafik_view,name='grafik_view'),
     path('muzik/',views.muzik_view,name='muzik_view'),
